@@ -1,10 +1,10 @@
 ---
-title: "Application of interpretable data-driven methods for the reconstruction of supernova neutrino energy spectra following fast neutrino flavor conversions"
+title: "A Machine Learning Method for Hunting Hidden Axion Signals in Pulsar Dispersion Measurements"
 collection: publications
 category: manuscripts
-permalink: /publication/2009-10-01-paper-title-number-1
+permalink: /publication/ml-for-axion-psr
 # excerpt: 'This paper is about the number 1. The number 2 is left for future work.'
-date: 2025-07-13
+date: 2025-08-06
 venue: 'Arxiv'
 # slidesurl: 'http://academicpages.github.io/files/slides1.pdf'
 # paperurl: 'http://academicpages.github.io/files/paper1.pdf'
