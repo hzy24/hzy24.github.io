@@ -17,7 +17,7 @@ I am dedicated to developing interpretable machine learning and artificial intel
 
 My research interests lie in data‐driven discovery in astrophysics, with a particular focus on uncovering the fundamental physical principles hidden within the data itself.
 
-</p>
+<!-- </p> -->
 
 
 
