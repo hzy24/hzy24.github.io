@@ -5,12 +5,7 @@ author_profile: true
 title: "About me"
 ---
 
----
-layout: single
-permalink: /
-author_profile: true
-title: "About me"
----
+
 
 <p style="
   text-align: justify;           /* 两端对齐 */
