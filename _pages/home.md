@@ -7,13 +7,16 @@ title: "About me"
 
 
 
-<p style="
+<!-- <p style="
   text-align: left;
   hyphens: auto;
   overflow-wrap: anywhere;
   word-break: normal;
-">
-Dedicated to developing a new language—interpretable Artificial Intelligence—to decipher the new 'book of nature' written in vast astronomical data. My goal is to help shift the paradigm in astrophysics from model-driven verification to data-driven discovery, uncovering the fundamental physics hidden within the data itself.
+"> -->
+I am dedicated to developing interpretable machine learning and artificial intelligence models to extract physical insights and generate new hypotheses from vast astronomical datasets. 
+
+My research interests lie in data‐driven discovery in astrophysics, with a particular focus on uncovering the fundamental physical principles hidden within the data itself.
+
 </p>
 
 
