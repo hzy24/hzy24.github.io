@@ -24,9 +24,8 @@ My research interests lie in data‐driven discovery in astrophysics, with a par
 Education
 ======
 <!-- * Ph.D in Version Control Theory, GitHub University, 2018 (expected) -->
-* M.S. University of Chinese Academy of Sciences, Xinjiang Astronomical Observatory, 2023-2026
-* B.S. Sun Yat-sen University, School of Physics and Astronomy, 2016-2020
-
+- **M.S. in Astronomy**, University of Chinese Academy of Sciences, Xinjiang Astronomical Observatory (2023 – 2026)  
+- **B.S. in Physics and Astronomy**, Sun Yat-sen University, School of Physics and Astronomy (2016 – 2020)
 
 
 Publications
