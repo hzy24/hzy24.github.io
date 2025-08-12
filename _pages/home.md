@@ -27,7 +27,7 @@ Education
 - **M.S. in Astronomy**, University of Chinese Academy of Sciences, Xinjiang Astronomical Observatory (2023 – 2026)  
 - **B.S. in Physics and Astronomy**, Sun Yat-sen University, School of Physics and Astronomy (2016 – 2020)
 
-preprint
+Preprints
 ======
 
 - Haihao Shi\*, **Zhenyang Huang**\*, Qiyu Yan, Jun Li, Guoliang Lü, Xuefei Chen. *A Machine Learning Method for Hunting Hidden Axion Signals in Pulsar Dispersion Measurements*. arXiv: [2505.16562](https://arxiv.org/abs/2505.16562), 2025. (\* Co–first authors)
