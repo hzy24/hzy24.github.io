@@ -13,7 +13,7 @@ title: "About me"
   overflow-wrap: anywhere;
   word-break: normal;
 "> -->
-I am dedicated to developing interpretable machine learning and artificial intelligence models to extract physical insights and generate new hypotheses from vast astronomical datasets. 
+I am dedicated to developing interpretable machine learning and artificial intelligence models to extract physical insights and generate new hypotheses from vast astronomical data. 
 
 My research interests lie in data‐driven discovery in astrophysics, with a particular focus on uncovering the fundamental physical principles hidden within the data itself.
 
