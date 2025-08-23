@@ -37,5 +37,15 @@ Preprints
 - Haihao Shi, Junda Zhou, **Zhenyang Huang**, Guoliang Lü, Xuefei Chen. *Dark Matter (S)pins the Planet*. arXiv: [2503.17206](https://arxiv.org/abs/2503.17206), 2025. 
 
 
-Publications
+
+Some media-noticed articles
 ======
+* **Axion Search via Machine Learning Reveals No Signal in Pulsar Data** <br>
+    *Quantum Zeitgeist, Aug 2025* <br>
+    A news feature on our research using machine learning methods to analyze pulsar data for axion signals. \[[Read More](https://quantumzeitgeist.com/axion-search-via-machine-learning-reveals-no-signal-in-pulsar-data/)]
+
+* **Is Dark Matter Spinning Up the Earth? New Research Says Yes** <br>
+    *NASA Space News, Apr 2025* <br>
+    A news article highlighting our study on the possible influence of dark matter on planet's rotation. \[[Read More](https://nasaspacenews.com/2025/04/is-dark-matter-spinning-up-the-earth-new-research-says-yes/)]
+
+
