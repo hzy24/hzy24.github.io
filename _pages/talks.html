@@ -9,12 +9,43 @@ author_profile: true
 <p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
 {% endif %}
 
+<!-- Font Awesome（若站点已全局引入可删） -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  /* 仅限定在 talk-list 区域，避免影响全站 */
+  .talk-list { list-style: disc; margin-left: 1.2em; padding-left: 0; }
+  .talk-list > li { margin: 0.25rem 0 0.75rem; }
+  .right-meta { float: right; margin-left: 0.5rem; white-space: nowrap; }
+  .right-meta .date { font-style: italic; color: #333; }
+  .right-meta .github a { color: #0b4a9f; text-decoration: none; }
+  .right-meta .github a:hover { text-decoration: underline; }
+  .affil { color: #555; font-style: italic; }
+  .sub-points { list-style: circle; margin: 0.25rem 0 0 1.2em; }
+  .talk-list > li::after { content: ""; display: block; clear: both; } /* 清除浮动 */
+</style>
+
 <h2>2025</h2>
 <ul class="talk-list">
-
   <li>
     <strong>11th Youth Astronomical Forum of the Chinese Astronomical Society; China, Dali</strong> (Aug. 2025)<br>
     Poster Presentation: <em>Application of Interpretable Data-Driven Methods for the Reconstruction of Supernova Neutrino Energy Spectra Following Fast Neutrino Flavor Conversions</em>
   </li>
+</ul>
 
+<h2>2024</h2>
+<ul class="talk-list">
+  <li>
+    <strong>Gravitational Wave Data Exploration: A Practical Training in Programming and Analysis</strong>
+    <span class="right-meta">
+      <span class="date">Nov.2023 - Sep.2024</span>
+      <span class="github">[<a href="https://github.com/iphysresearch/GWData-Bootcamp" aria-label="GitHub repo"><i class="fa-brands fa-github"></i></a>]</span>
+    </span>
+    <br>
+    <span class="affil">ICTP, UCAS</span>
+    <ul class="sub-points">
+      <li>Developed machine learning model for gravitational wave data exploration</li>
+      <li>Led the team to win the championship of the final Kaggle competition of the project</li>
+    </ul>
+  </li>
 </ul>
