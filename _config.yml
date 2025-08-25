@@ -22,7 +22,7 @@ repository               : "hzy24/hzy24.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "hzy.png"
+  avatar           : "hzy_.png"
   name             : "Zhenyang Huang"
   pronouns         : # example: "she/her"  
   bio              : "M.S. candidate in Astronomy"
