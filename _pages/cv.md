@@ -1,4 +1,14 @@
 ---
+layout: default
+title: "CV"
+permalink: /cv/
+---
+
+<p>If you are not redirected, <a href="/files/Zhenyang_Huang_CV.pdf">click here to download the CV (PDF)</a>.</p>
+<meta http-equiv="refresh" content="0; url=/files//Zhenyang_Huang_CV.pdf">
+
+
+<!-- ---
 layout: archive
 title: ""
 permalink: /cv/
@@ -12,8 +22,8 @@ redirect_from:
 Education
 ======
 <!-- * Ph.D in Version Control Theory, GitHub University, 2018 (expected) -->
-* M.S. University of Chinese Academy of Sciences, Xinjiang Astronomical Observatory, 2023-2026
-* B.S. Sun Yat-sen University, School of Physics and Astronomy, 2016-2020
+<!-- * M.S. University of Chinese Academy of Sciences, Xinjiang Astronomical Observatory, 2023-2026
+* B.S. Sun Yat-sen University, School of Physics and Astronomy, 2016-2020 -->
 
 <!-- Work experience
 ======
@@ -41,11 +51,11 @@ Education
   * Sub-skill 2.3
 * Skill 3 -->
 
-Publications
+<!-- Publications
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+  {% endfor %}</ul> -->
   
 <!-- Talks
 ======
