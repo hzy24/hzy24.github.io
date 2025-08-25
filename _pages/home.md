@@ -19,7 +19,7 @@ title: "Welcome to Zhenyang Huang's personal homepage！"
 I’m Zhenyang Huang (黄震洋), a third-year M.S. student in Astronomy at the University of Chinese Academy of Sciences (UCAS), graduating in 2026.
 
 
-My research centers on data-driven astronomy & astrophysics, with an emphasis on interpretable/physics-guided machine learning. I aim to uncover and validate underlying physical mechanisms directly from large datasets and to formulate hypotheses.
+My research centers on **data-driven astronomy and astrophysics**, with an emphasis on **interpretable/physics-guided machine learning**. I aim to uncover and validate underlying physical mechanisms directly from large datasets and to formulate hypotheses.
 
 <!-- I am dedicated to developing interpretable machine learning and artificial intelligence models to extract physical insights and generate new hypotheses from vast astronomical data. 
 
