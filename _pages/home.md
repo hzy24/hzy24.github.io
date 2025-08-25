@@ -2,7 +2,7 @@
 layout: single
 permalink: /
 author_profile: true
-title: "About me"
+title: "Welcome to Zhenyang Huang's personal homepage！"
 ---
 
 
@@ -14,7 +14,7 @@ title: "About me"
   word-break: normal;
 "> -->
 
-
+## About Me
 
 I’m Zhenyang Huang (黄震洋), a third-year M.S. student in Astronomy at the University of Chinese Academy of Sciences (UCAS), graduating in 2026.
 
@@ -31,16 +31,15 @@ My research interests lie in data‐driven discovery in astronomy & astrophysics
 <!-- </p> -->
 
 
-Education
-======
+## Education
+
 <!-- * Ph.D in Version Control Theory, GitHub University, 2018 (expected) -->
 - **M.S. in Astronomy**, University of Chinese Academy of Sciences, Xinjiang Astronomical Observatory (2023 – 2026)  
 - **B.S. in Physics and Astronomy**, Sun Yat-sen University, School of Physics and Astronomy (2016 – 2020)
 
 
 
-Preprints
-======
+## Preprints
 
 - Haihao Shi\*, **Zhenyang Huang**\*, Qiyu Yan, Jun Li, Guoliang Lü, Xuefei Chen. *A Machine Learning Method for Hunting Hidden Axion Signals in Pulsar Dispersion Measurements*. arXiv: [2505.16562](https://arxiv.org/abs/2505.16562), 2025. (\* Co–first authors)
 
@@ -51,10 +50,8 @@ Preprints
 
 
 
+## Some media-noticed articles
 
-
-Some media-noticed articles
-======
 * **Axion Search via Machine Learning Reveals No Signal in Pulsar Data** <br>
     *Quantum Zeitgeist, Aug 2025* <br>
     A news feature on our research using machine learning methods to analyze pulsar data for axion signals. \[[Read More](https://quantumzeitgeist.com/axion-search-via-machine-learning-reveals-no-signal-in-pulsar-data/)]
