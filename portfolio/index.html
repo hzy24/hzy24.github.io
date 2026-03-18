@@ -217,18 +217,24 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
         
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
         <title>Zhenyang Huang</title>
         
         <style>
-            /* 这些是你之前加的自定义样式，保留在这里 */
+            /* 自定义学术样式 */
             .education__list { list-style: none; padding-left: 0; }
             .education__item { margin-bottom: 1.5rem; border-left: 3px solid var(--first-color); padding-left: 1rem; }
             .research__icon-container { display: flex; gap: 2rem; font-size: 3rem; margin-top: 1.5rem; }
             .research__icon-container a { color: var(--second-color); transition: color 0.3s; }
             .research__icon-container a:hover { color: var(--first-color); }
             .home__title { font-size: 2.5rem; }
+            
+            /* 强制首页大头照变成正圆形，并增加一点阴影质感 */
+            .home__img img {
+                border-radius: 50%;
+                object-fit: cover;
+                aspect-ratio: 1/1;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
         </style>
     </head>
     <body>
@@ -264,73 +270,117 @@
             <p>&#169; 2026 Zhenyang Huang. All rights reserved.</p>
         </footer>
 
-        <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        
         <script src="https://unpkg.com/scrollreveal"></script>
-        <script src="./script/js/main.js"></script>
-
         <script>
-            $(document).ready(function() {
-                // 定义一个计数器，记录加载完成的模块数量
-                var sectionsToLoad = 5;
-                var loadedSections = 0;
+            // 1. 定义需要加载的模块列表
+            const sections = [
+                { id: 'section-home', url: './sections/home.html' },
+                { id: 'section-about', url: './sections/about.html' },
+                { id: 'section-education', url: './sections/education.html' },
+                { id: 'section-research', url: './sections/research.html' },
+                { id: 'section-contact', url: './sections/contact.html' }
+            ];
 
-                // 定义一个回调函数，每次加载完一个模块就调用
-                function checkAllLoaded() {
-                    loadedSections++;
-                    // 如果5个模块都加载完了，再重新初始化动画和主 JS
-                    if (loadedSections === sectionsToLoad) {
-                        console.log("所有模块加载完毕，正在初始化特效...");
-                        
-                        // 1. 重新引入 main.js 触发各种点击和滚动事件
-                        $.getScript("./script/js/main.js");
+            // 2. 使用原生 fetch API 异步加载所有模块
+            async function loadSectionsAndInit() {
+                try {
+                    // 并发请求所有 HTML 片段
+                    const loadPromises = sections.map(async (section) => {
+                        const response = await fetch(section.url);
+                        if (!response.ok) throw new Error(`Failed to load ${section.url}`);
+                        const html = await response.text();
+                        document.getElementById(section.id).innerHTML = html;
+                    });
 
-                        // 2. 重新初始化 ScrollReveal 飘字特效
-                        const sr = ScrollReveal({
-                            origin: 'top',
-                            distance: '80px',
-                            duration: 2000,
-                            reset: true // 如果你想每次滚动回去都重新飘一次，设为 true
-                        });
+                    // 等待所有片段都被成功塞进 DOM
+                    await Promise.all(loadPromises);
+                    console.log("所有 HTML 模块加载并渲染完毕！");
 
-                        // 给各个模块的元素重新绑定飘入效果
-                        /*SCROLL HOME*/
-                        sr.reveal('.home__title',{}); 
-                        sr.reveal('.button',{delay: 200}); 
-                        sr.reveal('.home__img',{delay: 400}); 
-                        sr.reveal('.home__social-icon',{ interval: 200}); 
+                    // 3. 此时 DOM 已经完整，初始化导航栏等 UI 逻辑
+                    initMainJS();
 
-                        /*SCROLL ABOUT*/
-                        sr.reveal('.about__img',{}); 
-                        sr.reveal('.about__subtitle',{delay: 400}); 
-                        sr.reveal('.about__text',{delay: 400}); 
+                    // 4. 重磅：精准唤醒 ScrollReveal 飘字/飘图动画
+                    initScrollReveal();
 
-                        /*SCROLL EDUCATION*/
-                        sr.reveal('.skills__subtitle',{}); 
-                        sr.reveal('.education__item',{distance: '20px', delay: 50, interval: 100}); 
-                        sr.reveal('.skills__img',{delay: 600});
-
-                        /*SCROLL RESEARCH*/
-                        sr.reveal('.research__icon-container a',{interval: 200});
-
-                        /*SCROLL CONTACT*/
-                        sr.reveal('.contact__input',{interval: 200});
-                    }
+                } catch (error) {
+                    console.error("模块加载出错:", error);
                 }
+            }
 
-                // 按顺序加载模块，并在加载完成后调用 checkAllLoaded
-                $("#section-home").load("./sections/home.html", checkAllLoaded);
-                // $("#section-about").load("./sections/about.html", checkAllLoaded);
-                $("#section-education").load("./sections/education.html", checkAllLoaded);
-                $("#section-research").load("./sections/research.html", checkAllLoaded);
-                $("#section-contact").load("./sections/contact.html", checkAllLoaded);
+            // UI 逻辑初始化函数（提取自原 main.js 的核心部分）
+            function initMainJS() {
+                const navMenu = document.getElementById('nav-menu'),
+                      navToggle = document.getElementById('nav-toggle'),
+                      navClose = document.getElementById('nav-close');
+                      
+                if(navToggle){ navToggle.addEventListener('click', () =>{ navMenu.classList.add('show') }) }
+                if(navClose){ navClose.addEventListener('click', () =>{ navMenu.classList.remove('show') }) }
 
-                // 星空粒子特效不受 DOM 结构影响，可以直接初始化
-                particlesJS('particles-js', {
-                    "particles": { "number": { "value": 80 }, "color": { "value": ["#ffffff", "#007acc"] }, "shape": { "type": "circle" }, "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1 } }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 1.5 } }, "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } } }, "retina_detect": true
+                const navLink = document.querySelectorAll('.nav__link');
+                function linkAction(){
+                    const navMenu = document.getElementById('nav-menu');
+                    navMenu.classList.remove('show');
+                }
+                navLink.forEach(n => n.addEventListener('click', linkAction));
+
+                const sectionsDOM = document.querySelectorAll('section[id]');
+                window.addEventListener('scroll', scrollActive);
+                function scrollActive(){
+                    const scrollY = window.pageYOffset;
+                    sectionsDOM.forEach(current =>{
+                        const sectionHeight = current.offsetHeight;
+                        const sectionTop = current.offsetTop - 50;
+                        let sectionId = current.getAttribute('id');
+                        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active');
+                        }else{
+                            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active');
+                        }
+                    });
+                }
+            }
+
+            // ScrollReveal 动画引擎
+            function initScrollReveal() {
+                // 先销毁可能存在的旧实例，确保干净启动
+                if(window.sr) { window.sr.destroy(); }
+                
+                const sr = ScrollReveal({
+                    origin: 'top',
+                    distance: '80px',
+                    duration: 2000,
+                    reset: true // 每次滚动回去都会重新飘出
                 });
-            });
+
+                // --- 首页 (Home) ---
+                sr.reveal('.home__title', {}); 
+                sr.reveal('.home__subtitle', { delay: 200 }); 
+                sr.reveal('.home__data p', { delay: 300 }); // 你新加的段落
+                sr.reveal('.button', { delay: 400 }); 
+                sr.reveal('.home__img', { delay: 400, origin: 'right' }); // 大头照从右侧飘入
+                sr.reveal('.home__social-icon', { interval: 200, origin: 'left' }); 
+
+                // --- 关于我 (About) ---
+                sr.reveal('.about__img', { origin: 'left' }); 
+                sr.reveal('.about__subtitle', { delay: 200 }); 
+                sr.reveal('.about__text', { delay: 400, interval: 200 }); 
+
+                // --- 教育背景 (Education) ---
+                sr.reveal('.section-title', { origin: 'top' }); // 所有大标题
+                sr.reveal('.education__item', { origin: 'bottom', distance: '40px', delay: 100, interval: 200 }); 
+
+                // --- 科研 (Research) ---
+                sr.reveal('.research__icon-container a', { origin: 'bottom', distance: '20px', delay: 200, interval: 150 });
+
+                // --- 联系方式 (Contact) ---
+                sr.reveal('.contact__subtitle', { delay: 200 });
+                sr.reveal('.contact__container .button', { origin: 'bottom', distance: '30px', delay: 400, interval: 200 });
+                
+                console.log("ScrollReveal 动画绑定完毕！");
+            }
+
+            // 启动引擎！
+            window.addEventListener('DOMContentLoaded', loadSectionsAndInit);
         </script>
     </body>
 </html>
