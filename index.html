@@ -12,7 +12,8 @@
     <meta name="msapplication-TileImage" content="./img/icon.jpg" />
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <title>Zhenyang Huang | Home</title>
 
@@ -60,24 +61,36 @@
             color: #007acc !important; 
         }
 
-        /* 修复按钮：变成精简的线框按钮，文字不换行 */
-        .btn-portfolio {
+        /* 修复按钮：变成精简的线框按钮，带有图标和光晕 */
+        .btn-profile {
             background-color: transparent !important;
             color: #ffffff !important;
-            border: 2px solid #007acc !important;
+            border: 2px solid #007acc !important; /* VS Code 蓝 */
             border-radius: 8px !important; /* 微圆角，更现代 */
-            padding: 10px 32px !important;
+            padding: 12px 36px !important; /* 核心修复：调整内边距以容纳图标和长文本 */
             font-weight: 600 !important;
             font-size: 1.1rem !important;
             transition: all 0.3s ease !important;
             white-space: nowrap !important; /* 核心修复：绝对不换行 */
-            display: inline-block !important;
+            display: inline-flex !important; /* 核心修复：容纳图标 */
+            align-items: center !important;
+            text-decoration: none !important;
         }
         
-        .btn-portfolio:hover {
-            background-color: #007acc !important;
+        .btn-profile:hover {
+            background-color: #007acc !important; /* 悬停时填满颜色 */
             color: #ffffff !important;
-            box-shadow: 0 0 15px rgba(0, 122, 204, 0.4) !important;
+            box-shadow: 0 0 20px rgba(0, 122, 204, 0.6) !important; /* 更强的 VSCode 蓝光晕 */
+        }
+
+        /* 图标样式 */
+        .btn-profile i {
+            margin-left: 10px !important;
+            transition: transform 0.3s ease !important;
+        }
+        
+        .btn-profile:hover i {
+            transform: translateX(5px) !important; /* 悬停时图标右移 */
         }
 
         /* 修复照片排版 */
@@ -111,9 +124,11 @@
                         I wanna bridge the gap between complex astrophysical datasets and fundamental physical laws using machine learning models.
                     </p>
                     
-                    <div class="btn_container" style="margin-top: 30px;">
+                    <div class="btn_container" style="margin-top: 35px;">
                         <a href="./portfolio/index.html" style="text-decoration: none;">
-                            <button class="btn btn-portfolio animate__animated animate__fadeInUp">Portfolio</button>
+                            <button class="btn btn-profile animate__animated animate__fadeInUp">
+                                Academic Profile <i class="fa fa-angle-right"></i>
+                            </button>
                         </a>
                     </div>
                 </div>
