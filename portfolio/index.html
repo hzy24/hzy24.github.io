@@ -530,10 +530,13 @@
                     console.log("所有主动 HTML 模块、动态导航栏均加载渲染完毕！");
 
                     // 4. 初始化 UI 逻辑 (高亮、点击事件等)
+                    
                     initMainJS();
-
+                    initHomeTyping();
                     // 5. 初始化 ScrollReveal 动画特效
                     initScrollReveal();
+
+                
 
                 } catch (error) {
                     console.error("学术主页重构出错:", error);
