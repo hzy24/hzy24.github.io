@@ -411,7 +411,8 @@
             .home__title { font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; } /* 微调名字大小 */
             
             /* 适配布局交换后的 ScrollReveal 默认状态 */
-            .home__img-wrapper, .home__data { visibility: hidden; }
+            /* .home__img-wrapper, .home__data { visibility: hidden; } */
+            .home__img, .home__data { visibility: hidden; }
         </style>
     </head>
     <body>
@@ -582,7 +583,8 @@
                 sr.reveal('.section-title', {}); 
 
                 // --- 首页 (Home - 适配左图右文布局) ---
-                sr.reveal('.home__img-wrapper', { origin: 'left', visibility: 'visible' }); // 照片从左侧滑入
+                // sr.reveal('.home__img-wrapper', { origin: 'left', visibility: 'visible' }); // 照片从左侧滑入
+                sr.reveal('.home__img', { origin: 'left', visibility: 'visible' }); // 照片从左侧滑入
                 sr.reveal('.home__data', { origin: 'right', delay: 200, visibility: 'visible' }); // 简介从右侧滑入
                 sr.reveal('.home__social-icon', { interval: 200, origin: 'bottom', distance: '30px' }); 
 
