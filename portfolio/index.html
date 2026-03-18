@@ -272,14 +272,61 @@
 
         <script>
             $(document).ready(function() {
-                // 按顺序加载模块
-                $("#section-home").load("./sections/home.html");
-                $("#section-about").load("./sections/about.html");
-                $("#section-education").load("./sections/education.html");
-                $("#section-research").load("./sections/research.html");
-                $("#section-contact").load("./sections/contact.html");
+                // 定义一个计数器，记录加载完成的模块数量
+                var sectionsToLoad = 5;
+                var loadedSections = 0;
 
-                // 重新初始化粒子特效
+                // 定义一个回调函数，每次加载完一个模块就调用
+                function checkAllLoaded() {
+                    loadedSections++;
+                    // 如果5个模块都加载完了，再重新初始化动画和主 JS
+                    if (loadedSections === sectionsToLoad) {
+                        console.log("所有模块加载完毕，正在初始化特效...");
+                        
+                        // 1. 重新引入 main.js 触发各种点击和滚动事件
+                        $.getScript("./script/js/main.js");
+
+                        // 2. 重新初始化 ScrollReveal 飘字特效
+                        const sr = ScrollReveal({
+                            origin: 'top',
+                            distance: '80px',
+                            duration: 2000,
+                            reset: true // 如果你想每次滚动回去都重新飘一次，设为 true
+                        });
+
+                        // 给各个模块的元素重新绑定飘入效果
+                        /*SCROLL HOME*/
+                        sr.reveal('.home__title',{}); 
+                        sr.reveal('.button',{delay: 200}); 
+                        sr.reveal('.home__img',{delay: 400}); 
+                        sr.reveal('.home__social-icon',{ interval: 200}); 
+
+                        /*SCROLL ABOUT*/
+                        sr.reveal('.about__img',{}); 
+                        sr.reveal('.about__subtitle',{delay: 400}); 
+                        sr.reveal('.about__text',{delay: 400}); 
+
+                        /*SCROLL EDUCATION*/
+                        sr.reveal('.skills__subtitle',{}); 
+                        sr.reveal('.education__item',{distance: '20px', delay: 50, interval: 100}); 
+                        sr.reveal('.skills__img',{delay: 600});
+
+                        /*SCROLL RESEARCH*/
+                        sr.reveal('.research__icon-container a',{interval: 200});
+
+                        /*SCROLL CONTACT*/
+                        sr.reveal('.contact__input',{interval: 200});
+                    }
+                }
+
+                // 按顺序加载模块，并在加载完成后调用 checkAllLoaded
+                $("#section-home").load("./sections/home.html", checkAllLoaded);
+                // $("#section-about").load("./sections/about.html", checkAllLoaded);
+                $("#section-education").load("./sections/education.html", checkAllLoaded);
+                $("#section-research").load("./sections/research.html", checkAllLoaded);
+                $("#section-contact").load("./sections/contact.html", checkAllLoaded);
+
+                // 星空粒子特效不受 DOM 结构影响，可以直接初始化
                 particlesJS('particles-js', {
                     "particles": { "number": { "value": 80 }, "color": { "value": ["#ffffff", "#007acc"] }, "shape": { "type": "circle" }, "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1 } }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 1.5 } }, "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } } }, "retina_detect": true
                 });
