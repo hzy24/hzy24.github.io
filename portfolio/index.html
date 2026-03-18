@@ -194,6 +194,16 @@
         <script src="https://unpkg.com/scrollreveal"></script>
 
         <script src="./script/js/main.js"></script>
+<script src="./script/js/main.js"></script>
 
-        </body>
+        <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        
+        <script>
+            // 这里放我们第一步改好的那个 "深邃星空版" 的 particlesJS 配置
+            particlesJS.load('particles-js', 'particles.json', function() {
+                console.log('particles.js loaded - 学术星空背景已启动');
+            });
+        </script>
+    </body>
 </html>
