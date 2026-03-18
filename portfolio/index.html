@@ -1,16 +1,3 @@
-<!---
- .----------------.    .----------------.    .----------------.    .----------------. 
-| .--------------. |  | .--------------. |  | .--------------. |  | .--------------. |
-| |  ___  ____   | |  | |     _____    | |  | |  ____  ____  | |  | |     ____     | |
-| | |_  ||_  _|  | |  | |    |_   _|   | |  | | |_  _||_  _| | |  | |   .'    `.   | |
-| |   | |_/ /    | |  | |      | |     | |  | |   \ \  / /   | |  | |  /  .--.  \  | |
-| |   |  __'.    | |  | |      | |     | |  | |    \ \/ /    | |  | |  | |    | |  | |
-| |  _| |  \ \_  | |  | |     _| |_    | |  | |    _|  |_    | |  | |  \  `--'  /  | |
-| | |____||____| | |  | |    |_____|   | |  | |   |______|   | |  | |   `.____.'   | |
-| |              | |  | |              | |  | |              | |  | |              | |
-| '--------------' |  | '--------------' |  | '--------------' |  | '--------------' |
- '----------------'    '----------------'    '----------------'    '----------------' 
--->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,27 +6,57 @@
 
         <link rel="stylesheet" href="./script/css/styles.css">
 
-        <!-- =====BOX ICONS===== -->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
         <script src="https://unpkg.com/boxicons@2.0.9/dist/boxicons.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
-        <title>Portfolio | Kyxzy </title>
+        <title>Zhenyang Huang | Academic Portfolio</title>
+        
+        <style>
+            /* Additional subtle styling for academic lists */
+            .education__list {
+                list-style: none;
+                padding-left: 0;
+            }
+            .education__item {
+                margin-bottom: 1.5rem;
+                border-left: 3px solid var(--first-color);
+                padding-left: 1rem;
+            }
+            .research__icon-container {
+                display: flex;
+                gap: 2rem;
+                font-size: 3rem;
+                margin-top: 1.5rem;
+            }
+            .research__icon-container a {
+                color: var(--second-color);
+                transition: color 0.3s;
+            }
+            .research__icon-container a:hover {
+                color: var(--first-color);
+            }
+            /* Override home title for better academic fit */
+            .home__title {
+                font-size: 2.5rem;
+            }
+        </style>
     </head>
     <body>
-        <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">Kiyotaka</a>
+                    <a href="#" class="nav__logo">Zhenyang Huang</a>
                 </div>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
                         <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                        <li class="nav__item"><a href="#education" class="nav__link">Education</a></li>
+                        <li class="nav__item"><a href="#research" class="nav__link">Research</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact & CV</a></li>
                     </ul>
                 </div>
 
@@ -50,199 +67,133 @@
         </header>
 
         <main class="l-main">
-            <!--===== HOME =====-->
             <section class="home bd-grid" id="home">
                 <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Kiyotaka</span><br> Ordinary Students</h1>
-
-                    <a href="#" class="button">CV</a>
+                    <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Zhenyang Huang</span></h1>
+                    <h3 class="home__subtitle" style="margin-top: 10px; font-weight: 500; color: var(--second-color);">
+                        M.Sc. Student in Astronomy
+                    </h3>
+                    
+                    <a href="#contact" class="button" style="margin-top: 2rem;">Download CV</a>
                 </div>
 
                 <div class="home__social">
-                    <a href="" class="home__social-icon"><i class='bx bxl-linkedin'></i></a>
-                    <a href="" class="home__social-icon"><i class='bx bxl-behance' ></i></a>
-                    <a href="https://github.com/Kyxzy" class="home__social-icon"><i class='bx bxl-github' ></i></a>
+                    <a href="mailto:huangzhenyang23@mails.ucas.ac.cn" class="home__social-icon"><i class='bx bx-envelope'></i></a>
+                    <a href="https://github.com/hzy24" class="home__social-icon" target="_blank"><i class='bx bxl-github' ></i></a>
                 </div>
 
                 <div class="home__img">    
-                    <img src="./img/profile.png" alt="">
+                    <img src="./img/profile.png" alt="Zhenyang Huang">
                 </div>
             </section>
 
-            <!--===== ABOUT =====-->
             <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
+                <h2 class="section-title">About Me</h2>
 
                 <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="./img/ayanokoji.gif" alt="">
+                    <div>
+                        <img src="./img/profile.png" alt="Profile Image" style="border-radius: .5rem;">
                     </div>
                     
                     <div>
-                        <h2 class="about__subtitle">I'am Kiyo</h2>
-                        <p class="about__text">I come from Indonesia. A young man who has a dream to become DevOps. It might seem silly, because I'm not very computer savvy either. But I'm sure that I can reach my goals</p>           
+                        <h2 class="about__subtitle">Focusing on Interpretable AI in Astrophysics</h2>
+                        <p class="about__text">
+                            I am currently pursuing my Master's degree in Astronomy at the Xinjiang Astronomical Observatory, Chinese Academy of Sciences (expected graduation: June 2026), working under the supervision of Prof. Na Wang and Prof. Zhiyong Liu.
+                        </p>
+                        <br>
+                        <p class="about__text">
+                            My primary research interest lies at the intersection of astrophysics and machine learning. Specifically, I am deeply passionate about <strong>Interpretable Artificial Intelligence (IAI)</strong> and its applications in analyzing complex astronomical data, from distinguishing dark matter models to reconstructing supernova neutrino energy spectra. Currently, I am also developing a reinforcement learning-based robotic system for radio telescope scheduling.
+                        </p>
+                        <br>
+                        <p class="about__text">
+                            I am actively seeking Ph.D. opportunities to further explore how machine learning can unveil fundamental physical laws from vast astrophysical datasets.
+                        </p>           
                     </div>                                   
                 </div>
             </section>
 
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
+            <section class="skills section" id="education">
+                <h2 class="section-title">Education</h2>
 
-                <div class="skills__container bd-grid">          
+                <div class="skills__container bd-grid" style="grid-template-columns: 1fr; text-align: left;">          
                     <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">It's about my skills. Not much I can only a few. But right now I'm still honing it, so I can get what I want</p>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='fab fa-docker skills__icon'></i>
-                                <span class="skills__name">DOCKER</span>
-                            </div>
-                            <div class="skills__bar skills__docker">
-
-                            </div>
-                            <div>
-                                <span class="skills__percentage">70%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='fab fa-linux skills__icon'></i>
-                                <span class="skills__name">LINUX</span>
-                            </div>
-                            <div class="skills__bar skills__linux">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='fab fa-python skills__icon' ></i>
-                                <span class="skills__name">PYTHON</span>
-                            </div>
-                            <div class="skills__bar skills__py">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">65%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='fab fa-hackerrank skills__icon'></i>
-                                <span class="skills__name">CyberSec</span>
-                            </div>
-                            <div class="skills__bar skills__harden">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>              
-                        <img src="./img/kiyo.jpg" alt="" class="skills__img">
+                        <ul class="education__list">
+                            <li class="education__item">
+                                <h3 style="margin-bottom: .25rem;">M.Sc. in Astronomy</h3>
+                                <span style="font-size: .875rem; color: var(--second-color);">University of Chinese Academy of Sciences (Xinjiang Astronomical Observatory) | Sep 2023 - Jun 2026 (Expected)</span>
+                                <p style="margin-top: .5rem; font-size: .938rem;">Thesis: Research on Radio Telescope Observation Scheduling and Data Processing Based on Machine Learning</p>
+                            </li>
+                            <li class="education__item">
+                                <h3 style="margin-bottom: .25rem;">B.Sc. in Physics</h3>
+                                <span style="font-size: .875rem; color: var(--second-color);">Sun Yat-sen University | Sep 2019 - Jun 2023</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
+            <section class="about section" id="research">
+                <h2 class="section-title">Research & Publications</h2>
 
-                <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Send" class="contact__button button">
-                    </form>
+                <div class="about__container bd-grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div>
+                        <p class="about__text" style="max-width: 800px; margin: 0 auto;">
+                            My research portfolio encompasses data-driven approaches in cosmology (dark matter, axions), high-energy astrophysics (supernova neutrinos), and observational astronomy (telescope scheduling via reinforcement learning). 
+                            <br><br>
+                            For a comprehensive list of my peer-reviewed journal articles and preprints, please visit my profiles on the platforms below:
+                        </p>
+                        
+                        <div class="research__icon-container" style="justify-content: center;">
+                            <a href="https://scholar.google.com/citations?user=Yb79_gkAAAAJ" target="_blank" title="Google Scholar">
+                                <i class="ai ai-google-scholar-square"></i>
+                            </a>
+                            <a href="https://inspirehep.net/authors/2946446" target="_blank" title="INSPIRE-HEP">
+                                <i class="ai ai-inspire"></i>
+                            </a>
+                            <a href="http://orcid.org/0009-0009-8188-5632" target="_blank" title="ORCID">
+                                <i class="fab fa-orcid"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact section" id="contact">
+                <h2 class="section-title">Contact & CV</h2>
+
+                <div class="contact__container bd-grid" style="grid-template-columns: 1fr; text-align: center;">
+                    <div>
+                        <h3 class="contact__subtitle" style="margin-bottom: 2rem;">Let's Connect</h3>
+                        <p class="about__text" style="margin-bottom: 2rem;">
+                            I am open to discussions on AI applications in astronomy and Ph.D. opportunities. 
+                            Feel free to reach out via email.
+                        </p>
+                        
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+                            <a href="mailto:YOUR_EMAIL_HERE" class="button" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                                <i class='bx bx-envelope'></i> Email Me
+                            </a>
+                            
+                            <a href="./assets/Zhenyang_Huang_CV.pdf" class="button" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background-color: var(--second-color);">
+                                <i class='bx bx-download'></i> Download Full CV
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
 
-        <!--===== FOOTER =====-->
         <footer class="footer">
-            <p class="footer__title">Sosial Media</p>
+            <p class="footer__title">Zhenyang Huang</p>
             <div class="footer__social">
-                <a href="https://github.com/Kyxzy" class="footer__icon"><i class='bx bxl-github' ></i></a>
-                <a href="https://instagram.com/clyusz_" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="#" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
-            </div>
-            <p>&#169; 2021 copyright all right reserved</p>
+                <a href="https://github.com/hzy24" class="footer__icon" target="_blank"><i class='bx bxl-github' ></i></a>
+                </div>
+            <p>&#169; 2026 Zhenyang Huang. All rights reserved.</p>
         </footer>
 
-
-        <!--===== SCROLL REVEAL =====-->
         <script src="https://unpkg.com/scrollreveal"></script>
 
-        <!--===== MAIN JS =====-->
-        <script src="./script/js/main.js    "></script>
+        <script src="./script/js/main.js"></script>
 
-        <!---==== PARTICLES JS=====-->
-        <!-- <div id="particles-js"></div> -->
-        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script>
-            particlesJS.load('particles-js', 'particles.json',
-            function(){
-                console.log('particles.json loaded...')
-            })
-        </script>   
-        <!-- <script type="text/javascript" src="./script/js/app.js"></script>
-        <script type="text/javascript" src="./script/js/particles.js"></script> -->
-    
-    </body>
+        </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--Decode this : RkxBR3tsa3NqYWt0aW0yMDIyfQ==>
