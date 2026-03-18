@@ -85,6 +85,10 @@ canvas.particles-js-canvas-el{
 .hero_section .row img{
     width: 80%;
     border-radius: 50%;
+
+
+
+    
 }
 
 @media (max-width: 1200px) and (min-width: 993px){
