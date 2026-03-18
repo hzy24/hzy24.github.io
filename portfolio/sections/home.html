@@ -61,65 +61,7 @@
     </div>
 </section>
 
-<script>
-(function () {
-    const line1El = document.getElementById("typed-line1");
-    const line2PrefixEl = document.getElementById("typed-line2-prefix");
-    const nameEl = document.getElementById("typed-name");
-    const cursorEl = document.querySelector(".typing-cursor");
-    const subtitleItems = document.querySelectorAll(".subtitle-item");
 
-    if (!line1El || !line2PrefixEl || !nameEl || !cursorEl || subtitleItems.length === 0) return;
-
-    const line1 = "Hi,";
-    const line2Prefix = "I am ";
-    const line2Name = "Zhenyang Huang";
-    const speed = 85;
-
-    function typeText(el, text, callback) {
-        let i = 0;
-        function typing() {
-            if (i < text.length) {
-                el.textContent += text.charAt(i);
-                i++;
-                setTimeout(typing, speed);
-            } else if (callback) {
-                callback();
-            }
-        }
-        typing();
-    }
-
-    function showSubtitles(index = 0) {
-        if (index < subtitleItems.length) {
-            subtitleItems[index].classList.add("show");
-            setTimeout(() => showSubtitles(index + 1), 350);
-        } else {
-            setTimeout(() => {
-                cursorEl.style.display = "none";
-            }, 500);
-        }
-    }
-
-    line1El.textContent = "";
-    line2PrefixEl.textContent = "";
-    nameEl.textContent = "";
-
-    subtitleItems.forEach(item => item.classList.remove("show"));
-
-    typeText(line1El, line1, function () {
-        setTimeout(() => {
-            typeText(line2PrefixEl, line2Prefix, function () {
-                typeText(nameEl, line2Name, function () {
-                    setTimeout(() => {
-                        showSubtitles();
-                    }, 250);
-                });
-            });
-        }, 180);
-    });
-})();
-</script>
 
 
 <!-- <section class="home bd-grid" id="home">

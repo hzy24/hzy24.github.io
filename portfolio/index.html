@@ -447,6 +447,7 @@
             // 【Source of Truth】你的学术主页模块配置文件
             // 在这里集中管理你要加载哪些 HTML，以及它们在导航栏显示什么名字。
             // =========================================================
+            
             const pageConfig = {
                 // 用于设置加载顺序和自定义名称的配置数组
                 sections: [
@@ -539,22 +540,76 @@
                 }
             }
 
-            // UI 逻辑初始化函数 (适配动态 DOM)
+            function initHomeTyping() {
+                const line1El = document.getElementById("typed-line1");
+                const line2PrefixEl = document.getElementById("typed-line2-prefix");
+                const nameEl = document.getElementById("typed-name");
+                const cursorEl = document.querySelector(".typing-cursor");
+                const subtitleItems = document.querySelectorAll(".subtitle-item");
+
+                if (!line1El || !line2PrefixEl || !nameEl || !cursorEl || subtitleItems.length === 0) return;
+
+                const line1 = "Hi,";
+                const line2Prefix = "I am ";
+                const line2Name = "Zhenyang Huang";
+                const speed = 85;
+
+                function typeText(el, text, callback) {
+                    let i = 0;
+                    function typing() {
+                        if (i < text.length) {
+                            el.textContent += text.charAt(i);
+                            i++;
+                            setTimeout(typing, speed);
+                        } else if (callback) {
+                            callback();
+                        }
+                    }
+                    typing();
+                }
+
+                function showSubtitles(index = 0) {
+                    if (index < subtitleItems.length) {
+                        subtitleItems[index].classList.add("show");
+                        setTimeout(() => showSubtitles(index + 1), 350);
+                    } else {
+                        setTimeout(() => {
+                            cursorEl.style.display = "none";
+                        }, 500);
+                    }
+                }
+
+                line1El.textContent = "";
+                line2PrefixEl.textContent = "";
+                nameEl.textContent = "";
+                subtitleItems.forEach(item => item.classList.remove("show"));
+
+                typeText(line1El, line1, function () {
+                    setTimeout(() => {
+                        typeText(line2PrefixEl, line2Prefix, function () {
+                            typeText(nameEl, line2Name, function () {
+                                setTimeout(() => {
+                                    showSubtitles();
+                                }, 250);
+                            });
+                        });
+                    }, 180);
+                });
+            }
+
             function initMainJS() {
                 const navMenu = document.getElementById('nav-menu'),
-                      navToggle = document.getElementById('nav-toggle');
-                      
-                if(navToggle){ navToggle.addEventListener('click', () =>{ navMenu.classList.add('show') }) }
+                    navToggle = document.getElementById('nav-toggle');
 
-                // 重新绑定动态生成的导航链接点击事件
+                if(navToggle){ navToggle.addEventListener('click', () => { navMenu.classList.add('show') }) }
+
                 const navLink = document.querySelectorAll('.nav__link');
-                navLink.forEach(n => n.addEventListener('click', () =>{ navMenu.classList.remove('show') }));
+                navLink.forEach(n => n.addEventListener('click', () => { navMenu.classList.remove('show') }));
 
-                // 适配滚动激活逻辑
                 const sectionsDOM = document.querySelectorAll('section[id]');
                 window.addEventListener('scroll', () => {
                     const scrollY = window.pageYOffset;
-                    sectionsDOM.forEach(current =>{
+                    sectionsDOM.forEach(current => {
                         const sectionHeight = current.offsetHeight;
                         const sectionTop = current.offsetTop - 50;
                         let sectionId = current.getAttribute('id');
@@ -562,7 +617,7 @@
                         if(navA) {
                             if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
                                 navA.classList.add('active');
-                            }else{
+                            } else {
                                 navA.classList.remove('active');
                             }
                         }
@@ -570,7 +625,6 @@
                 });
             }
 
-            // ScrollReveal 动画引擎 (适配交换后的布局)
             function initScrollReveal() {
                 const sr = ScrollReveal({
                     origin: 'top',
@@ -579,34 +633,23 @@
                     reset: true
                 });
 
-                // --- 所有大标题 ---
-                sr.reveal('.section-title', {}); 
+                sr.reveal('.section-title', {});
+                sr.reveal('.home__img', { origin: 'left', visibility: 'visible' });
+                sr.reveal('.home__data', { origin: 'right', delay: 200, visibility: 'visible' });
+                sr.reveal('.home__social-icon', { interval: 200, origin: 'bottom', distance: '30px' });
 
-                // --- 首页 (Home - 适配左图右文布局) ---
-                // sr.reveal('.home__img-wrapper', { origin: 'left', visibility: 'visible' }); // 照片从左侧滑入
-                sr.reveal('.home__img', { origin: 'left', visibility: 'visible' }); // 照片从左侧滑入
-                sr.reveal('.home__data', { origin: 'right', delay: 200, visibility: 'visible' }); // 简介从右侧滑入
-                sr.reveal('.home__social-icon', { interval: 200, origin: 'bottom', distance: '30px' }); 
+                sr.reveal('.about__img', { origin: 'left' });
+                sr.reveal('.about__subtitle', { delay: 200 });
+                sr.reveal('.about__text', { delay: 400, interval: 200 });
 
-                // --- 关于我 (About) ---
-                sr.reveal('.about__img', { origin: 'left' }); 
-                sr.reveal('.about__subtitle', { delay: 200 }); 
-                sr.reveal('.about__text', { delay: 400, interval: 200 }); 
-
-                // --- 教育背景 (Education) ---
-                sr.reveal('.education__item', { origin: 'bottom', distance: '40px', delay: 100, interval: 200 }); 
-
-                // --- 科研 (Research) ---
+                sr.reveal('.education__item', { origin: 'bottom', distance: '40px', delay: 100, interval: 200 });
                 sr.reveal('.research__icon-container a', { origin: 'bottom', distance: '20px', delay: 200, interval: 150 });
-
-                // --- 联系方式 (Contact) ---
                 sr.reveal('.contact__subtitle', { delay: 200 });
                 sr.reveal('.contact__container .button', { origin: 'bottom', distance: '30px', delay: 400, interval: 200 });
-                
+
                 console.log("ScrollReveal 动画绑定完毕！");
             }
 
-            // 启动引擎！
             window.addEventListener('DOMContentLoaded', buildSiteAndInit);
         </script>
     </body>
