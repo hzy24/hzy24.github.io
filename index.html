@@ -62,35 +62,42 @@
         }
 
         /* 修复按钮：变成精简的线框按钮，带有图标和光晕 */
+        /* 彻底重构按钮盒模型，解决边框无法包裹文字的问题 */
         .btn-profile {
             background-color: transparent !important;
             color: #ffffff !important;
-            border: 2px solid #007acc !important; /* VS Code 蓝 */
-            border-radius: 8px !important; /* 微圆角，更现代 */
-            padding: 12px 36px !important; /* 核心修复：调整内边距以容纳图标和长文本 */
+            border: 2px solid #007acc !important;
+            border-radius: 8px !important;
+            padding: 12px 24px !important; /* 调整合理的内边距 */
             font-weight: 600 !important;
             font-size: 1.1rem !important;
             transition: all 0.3s ease !important;
-            white-space: nowrap !important; /* 核心修复：绝对不换行 */
-            display: inline-flex !important; /* 核心修复：容纳图标 */
+            
+            /* 核心修复区：强制自适应内容宽度 */
+            display: inline-flex !important; 
             align-items: center !important;
+            justify-content: center !important;
+            width: auto !important;     /* 强制宽度设为自动 */
+            min-width: min-content !important; /* 确保最小宽度至少等于内容宽度 */
+            max-width: fit-content !important; /* 限制最大宽度贴合内容 */
+            white-space: nowrap !important;
             text-decoration: none !important;
+            box-sizing: border-box !important; /* 确保 padding 算在宽度内 */
         }
         
         .btn-profile:hover {
-            background-color: #007acc !important; /* 悬停时填满颜色 */
+            background-color: #007acc !important;
             color: #ffffff !important;
-            box-shadow: 0 0 20px rgba(0, 122, 204, 0.6) !important; /* 更强的 VSCode 蓝光晕 */
+            box-shadow: 0 0 20px rgba(0, 122, 204, 0.6) !important;
         }
 
-        /* 图标样式 */
         .btn-profile i {
             margin-left: 10px !important;
             transition: transform 0.3s ease !important;
         }
         
         .btn-profile:hover i {
-            transform: translateX(5px) !important; /* 悬停时图标右移 */
+            transform: translateX(5px) !important;
         }
 
         /* 修复照片排版 */
