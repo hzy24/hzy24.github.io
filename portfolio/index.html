@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -198,6 +198,91 @@
             // 这里放我们第一步改好的那个 "深邃星空版" 的 particlesJS 配置
             particlesJS.load('particles-js', 'particles.json', function() {
                 console.log('particles.js loaded - 学术星空背景已启动');
+            });
+        </script>
+    </body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="./script/css/styles.css">
+
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <title>Zhenyang Huang</title>
+        
+        <style>
+            /* 这些是你之前加的自定义样式，保留在这里 */
+            .education__list { list-style: none; padding-left: 0; }
+            .education__item { margin-bottom: 1.5rem; border-left: 3px solid var(--first-color); padding-left: 1rem; }
+            .research__icon-container { display: flex; gap: 2rem; font-size: 3rem; margin-top: 1.5rem; }
+            .research__icon-container a { color: var(--second-color); transition: color 0.3s; }
+            .research__icon-container a:hover { color: var(--first-color); }
+            .home__title { font-size: 2.5rem; }
+        </style>
+    </head>
+    <body>
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div><a href="#" class="nav__logo">Zhenyang Huang</a></div>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active">Home</a></li>
+                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="#education" class="nav__link">Education</a></li>
+                        <li class="nav__item"><a href="#research" class="nav__link">Research</a></li>
+                        <li class="nav__item"><a href="#contact" class="nav__link">Contact & CV</a></li>
+                    </ul>
+                </div>
+                <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <div id="section-home"></div>
+            <div id="section-about"></div>
+            <div id="section-education"></div>
+            <div id="section-research"></div>
+            <div id="section-contact"></div>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__title">Zhenyang Huang</p>
+            <div class="footer__social">
+                <a href="https://github.com/hzy24" class="footer__icon" target="_blank"><i class='bx bxl-github' ></i></a>
+            </div>
+            <p>&#169; 2026 Zhenyang Huang. All rights reserved.</p>
+        </footer>
+
+        <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;"></div>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="./script/js/main.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                // 按顺序加载模块
+                $("#section-home").load("./sections/home.html");
+                $("#section-about").load("./sections/about.html");
+                $("#section-education").load("./sections/education.html");
+                $("#section-research").load("./sections/research.html");
+                $("#section-contact").load("./sections/contact.html");
+
+                // 重新初始化粒子特效
+                particlesJS('particles-js', {
+                    "particles": { "number": { "value": 80 }, "color": { "value": ["#ffffff", "#007acc"] }, "shape": { "type": "circle" }, "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1 } }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 }, "move": { "enable": true, "speed": 1.5 } }, "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" } } }, "retina_detect": true
+                });
             });
         </script>
     </body>
