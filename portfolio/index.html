@@ -205,7 +205,7 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -381,6 +381,231 @@
 
             // 启动引擎！
             window.addEventListener('DOMContentLoaded', loadSectionsAndInit);
+        </script>
+    </body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="./script/css/styles.css">
+
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+        
+        <title>Zhenyang Huang | Academic Profile</title>
+        
+        <style>
+            /* 自定义学术样式 (保留) */
+            .education__list { list-style: none; padding-left: 0; }
+            .education__item { margin-bottom: 1.5rem; border-left: 3px solid var(--first-color); padding-left: 1rem; }
+            .research__icon-container { display: flex; gap: 2rem; font-size: 3rem; margin-top: 1.5rem; }
+            .research__icon-container a { color: var(--second-color); transition: color 0.3s; }
+            .research__icon-container a:hover { color: var(--first-color); }
+            .home__title { font-size: 3.2rem; line-height: 1.1; margin-bottom: 15px; } /* 微调名字大小 */
+            
+            /* 适配布局交换后的 ScrollReveal 默认状态 */
+            .home__img-wrapper, .home__data { visibility: hidden; }
+        </style>
+    </head>
+    <body>
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div><a href="#" class="nav__logo">Zhenyang Huang</a></div>
+                
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list" id="dynamic-nav-list">
+                        </ul>
+                </div>
+                
+                <div class="nav__toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
+            </nav>
+        </header>
+
+        <main class="l-main" id="modular-content-container">
+            </main>
+
+        <footer class="footer">
+            <p class="footer__title">Zhenyang Huang</p>
+            <div class="footer__social">
+                <a href="https://github.com/hzy24" class="footer__icon" target="_blank"><i class='bx bxl-github' ></i></a>
+            </div>
+            <p>&#169; 2026 Zhenyang Huang. All rights reserved.</p>
+        </footer>
+
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <script>
+            // =========================================================
+            // 【Source of Truth】你的学术主页模块配置文件
+            // 在这里集中管理你要加载哪些 HTML，以及它们在导航栏显示什么名字。
+            // =========================================================
+            const pageConfig = {
+                // 用于设置加载顺序和自定义名称的配置数组
+                sections: [
+                    { 
+                        id: 'home',         // 模块的唯一 ID，对应 #home 锚点和 sections/home.html
+                        fileName: 'home',   // sections/ 下的 HTML 文件名 (不需要写 .html)
+                        navTitle: 'Home',   // 【核心自定义】在顶部导航栏显示的名称
+                        loadByDefault: true // 是否默认加载 (设为 false 相当于将其“注销”)
+                    },
+                    // 你想要的 "About" 模块 (暂时设为 false，它就不会加载，导航也不会出现)
+                    { 
+                        id: 'about', 
+                        fileName: 'about', 
+                        navTitle: 'About Me', // 这里可以自定义为 "About Me"
+                        loadByDefault: false 
+                    },
+                    { 
+                        id: 'education', 
+                        fileName: 'education', 
+                        navTitle: 'Academic History', // 这里自定义显示名称为 "Academic History"
+                        loadByDefault: true 
+                    },
+                    { 
+                        id: 'research', 
+                        fileName: 'research', 
+                        navTitle: 'Publications & Projects', // 这里自定义显示名称
+                        loadByDefault: true 
+                    },
+                    { 
+                        id: 'contact', 
+                        fileName: 'contact', 
+                        navTitle: 'Contact & CV', // 这里自定义显示名称
+                        loadByDefault: true 
+                    }
+                ]
+            };
+
+            // =========================================================
+            // 工程化加载引擎
+            // =========================================================
+            async function buildSiteAndInit() {
+                try {
+                    // 1. 筛选出所有标记为默认加载的主动模块
+                    const activeSections = pageConfig.sections.filter(sec => sec.loadByDefault);
+                    console.log(`准备加载并生成 ${activeSections.length} 个主动模块...`);
+
+                    const contentContainer = document.getElementById('modular-content-container');
+                    const navList = document.getElementById('dynamic-nav-list');
+
+                    // 2. 并发生成 DOM 结构、加载 HTML、生成导航栏
+                    const loadPromises = activeSections.map(async (section, index) => {
+                        // A. 生成内容坑位 (<div>)
+                        const sectionDiv = document.createElement('div');
+                        sectionDiv.id = `section-${section.id}`;
+                        contentContainer.appendChild(sectionDiv);
+
+                        // B. 生成导航栏列表项 (<li>)
+                        const navItem = document.createElement('li');
+                        navItem.classList.add('nav__item');
+                        
+                        // 生成链接 (<a>)
+                        const navLink = document.createElement('a');
+                        navLink.href = `#${section.id}`;
+                        navLink.classList.add('nav__link');
+                        navLink.innerText = section.navTitle; // 使用配置文件中的自定义显示名称！
+                        if (index === 0) navLink.classList.add('active'); // 第一个模块设为默认激活
+
+                        navItem.appendChild(navLink);
+                        navList.appendChild(navItem);
+
+                        // C. 异步请求并填充 HTML 内容
+                        const response = await fetch(`./sections/${section.fileName}.html`);
+                        if (!response.ok) throw new Error(`Failed to load ${section.fileName}.html`);
+                        const html = await response.text();
+                        sectionDiv.innerHTML = html;
+                    });
+
+                    // 3. 等待所有 DOM 操作、文件获取和渲染完成
+                    await Promise.all(loadPromises);
+                    console.log("所有主动 HTML 模块、动态导航栏均加载渲染完毕！");
+
+                    // 4. 初始化 UI 逻辑 (高亮、点击事件等)
+                    initMainJS();
+
+                    // 5. 初始化 ScrollReveal 动画特效
+                    initScrollReveal();
+
+                } catch (error) {
+                    console.error("学术主页重构出错:", error);
+                }
+            }
+
+            // UI 逻辑初始化函数 (适配动态 DOM)
+            function initMainJS() {
+                const navMenu = document.getElementById('nav-menu'),
+                      navToggle = document.getElementById('nav-toggle');
+                      
+                if(navToggle){ navToggle.addEventListener('click', () =>{ navMenu.classList.add('show') }) }
+
+                // 重新绑定动态生成的导航链接点击事件
+                const navLink = document.querySelectorAll('.nav__link');
+                navLink.forEach(n => n.addEventListener('click', () =>{ navMenu.classList.remove('show') }));
+
+                // 适配滚动激活逻辑
+                const sectionsDOM = document.querySelectorAll('section[id]');
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.pageYOffset;
+                    sectionsDOM.forEach(current =>{
+                        const sectionHeight = current.offsetHeight;
+                        const sectionTop = current.offsetTop - 50;
+                        let sectionId = current.getAttribute('id');
+                        const navA = document.querySelector(`.nav__menu a[href*=${sectionId}]`);
+                        if(navA) {
+                            if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+                                navA.classList.add('active');
+                            }else{
+                                navA.classList.remove('active');
+                            }
+                        }
+                    });
+                });
+            }
+
+            // ScrollReveal 动画引擎 (适配交换后的布局)
+            function initScrollReveal() {
+                const sr = ScrollReveal({
+                    origin: 'top',
+                    distance: '80px',
+                    duration: 2000,
+                    reset: true
+                });
+
+                // --- 所有大标题 ---
+                sr.reveal('.section-title', {}); 
+
+                // --- 首页 (Home - 适配左图右文布局) ---
+                sr.reveal('.home__img-wrapper', { origin: 'left', visibility: 'visible' }); // 照片从左侧滑入
+                sr.reveal('.home__data', { origin: 'right', delay: 200, visibility: 'visible' }); // 简介从右侧滑入
+                sr.reveal('.home__social-icon', { interval: 200, origin: 'bottom', distance: '30px' }); 
+
+                // --- 关于我 (About) ---
+                sr.reveal('.about__img', { origin: 'left' }); 
+                sr.reveal('.about__subtitle', { delay: 200 }); 
+                sr.reveal('.about__text', { delay: 400, interval: 200 }); 
+
+                // --- 教育背景 (Education) ---
+                sr.reveal('.education__item', { origin: 'bottom', distance: '40px', delay: 100, interval: 200 }); 
+
+                // --- 科研 (Research) ---
+                sr.reveal('.research__icon-container a', { origin: 'bottom', distance: '20px', delay: 200, interval: 150 });
+
+                // --- 联系方式 (Contact) ---
+                sr.reveal('.contact__subtitle', { delay: 200 });
+                sr.reveal('.contact__container .button', { origin: 'bottom', distance: '30px', delay: 400, interval: 200 });
+                
+                console.log("ScrollReveal 动画绑定完毕！");
+            }
+
+            // 启动引擎！
+            window.addEventListener('DOMContentLoaded', buildSiteAndInit);
         </script>
     </body>
 </html>
