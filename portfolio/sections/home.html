@@ -1,4 +1,128 @@
+<style>
+.typing-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--second-color);
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}
+
+.home__title {
+    min-height: 5.8rem;
+}
+
+#subtitle-group {
+    margin-top: 0.4rem;
+}
+
+.subtitle-item {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.subtitle-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
 <section class="home bd-grid" id="home">
+    <div class="home__data">
+        <h1 class="home__title">
+            <span id="typed-line1"></span><br>
+            <span id="typed-line2-prefix"></span><span id="typed-name" class="home__title-color"></span><span class="typing-cursor">|</span>
+        </h1>
+
+        <div id="subtitle-group">
+            <h3 class="home__subtitle subtitle-item" style="margin-top: 5px; font-weight: 600; color: var(--second-color); font-size: 1.5rem;">
+                M.Sc. Student in Astronomy
+            </h3>
+            <h3 class="home__subtitle subtitle-item" style="margin-top: 5px; font-weight: 600; color: var(--second-color); font-size: 1rem;">
+                University of Chinese Academy of Sciences
+            </h3>
+            <h3 class="home__subtitle subtitle-item" style="margin-top: 1px; font-weight: 600; color: var(--second-color); font-size: 1rem;">
+                Xinjiang Astronomical Observatory
+            </h3>
+        </div>
+    </div>
+    
+    <div class="home__social">
+        <a href="mailto:huangzhenyang23@mails.ucas.ac.cn" class="home__social-icon">
+            <i class='bx bx-envelope'></i>
+        </a>
+        <a href="https://github.com/hzy24" class="home__social-icon" target="_blank">
+            <i class='bx bxl-github'></i>
+        </a>
+    </div>
+</section>
+
+<script>
+(function () {
+    const line1El = document.getElementById("typed-line1");
+    const line2PrefixEl = document.getElementById("typed-line2-prefix");
+    const nameEl = document.getElementById("typed-name");
+    const cursorEl = document.querySelector(".typing-cursor");
+    const subtitleItems = document.querySelectorAll(".subtitle-item");
+
+    if (!line1El || !line2PrefixEl || !nameEl || !cursorEl || subtitleItems.length === 0) return;
+
+    const line1 = "Hi,";
+    const line2Prefix = "I am ";
+    const line2Name = "Zhenyang Huang";
+    const speed = 85;
+
+    function typeText(el, text, callback) {
+        let i = 0;
+        function typing() {
+            if (i < text.length) {
+                el.textContent += text.charAt(i);
+                i++;
+                setTimeout(typing, speed);
+            } else if (callback) {
+                callback();
+            }
+        }
+        typing();
+    }
+
+    function showSubtitles(index = 0) {
+        if (index < subtitleItems.length) {
+            subtitleItems[index].classList.add("show");
+            setTimeout(() => showSubtitles(index + 1), 350);
+        } else {
+            setTimeout(() => {
+                cursorEl.style.display = "none";
+            }, 500);
+        }
+    }
+
+    line1El.textContent = "";
+    line2PrefixEl.textContent = "";
+    nameEl.textContent = "";
+
+    subtitleItems.forEach(item => item.classList.remove("show"));
+
+    typeText(line1El, line1, function () {
+        setTimeout(() => {
+            typeText(line2PrefixEl, line2Prefix, function () {
+                typeText(nameEl, line2Name, function () {
+                    setTimeout(() => {
+                        showSubtitles();
+                    }, 250);
+                });
+            });
+        }, 180);
+    });
+})();
+</script>
+
+
+<!-- <section class="home bd-grid" id="home">
     <div class="home__data">
         <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Zhenyang Huang</span></h1>
         
@@ -12,19 +136,6 @@
             Xinjiang Astronomical Observatory
         </h3>
 
-        <!-- <div style="margin-top: 1.5rem; line-height: 1.7; font-size: 1rem; color: #555; max-width: 550px;">
-            <p style="margin-bottom: 1rem;">
-                I am currently pursuing my Master's degree in Astronomy at the Xinjiang Astronomical Observatory, Chinese Academy of Sciences.
-            </p>
-            <p style="margin-bottom: 1rem;">
-                I am broadly interested in data-driven astrophysics, with a particular taste for using data-driven methods to study interesting issues across the field. My work so far has involved multiple areas, including cosmology, high-energy astrophysics, exoplanets, and radio astronomy data processing.
-            </p>
-            <p>
-                <strong>My motivation is rooted in the belief that physics gives rise to data, and that innovative machine learning methods can help uncover the physics hidden within it.</strong>
-            </p>
-        </div> -->
-
-        <!-- <a href="#contact" class="button" style="margin-top: 2rem;">Download CV</a> -->
     </div>
     
     <div class="home__social">
@@ -32,11 +143,9 @@
         <a href="https://github.com/hzy24" class="home__social-icon" target="_blank"><i class='bx bxl-github'></i></a>
     </div>
 
-    <!-- <div class="home__img">    
-        <img src="./img/profile.png" alt="Zhenyang Huang">
-    </div> -->
+
     
-    <!-- <div class="home__img" style="overflow: hidden; border-radius: 50%;">    
+    <div class="home__img" style="overflow: hidden; border-radius: 50%;">    
         <img src="./img/profile.png" alt="Zhenyang Huang" style="display: block;">
-    </div> -->
-</section>
+    </div>
+</section> -->
