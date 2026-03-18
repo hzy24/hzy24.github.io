@@ -12,60 +12,80 @@
     <meta name="msapplication-TileImage" content="./img/icon.jpg" />
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
     
     <title>Zhenyang Huang | Home</title>
 
     <style>
-        /* 强制覆盖部分样式：确保背景深邃，且粒子效果严格在最底层 */
+        /* 重置背景，确保深邃 */
         body, html {
             height: 100%;
             margin: 0;
+            background-color: #1e1e1e !important; /* VS Code 默认深色背景 */
+            color: #d4d4d4 !important; /* VS Code 默认文字颜色 */
             overflow-x: hidden;
-            background-color: #0b0c10; /* 深邃的星空底色 */
-            color: #ffffff; 
         }
+        
+        /* 修复排版层级 */
         .hero_section {
             position: relative;
             height: 100vh;
             display: flex;
             align-items: center;
-            z-index: 1; /* 确保文字内容在粒子上方 */
+            z-index: 2; /* 确保文字在粒子上方 */
+            background: transparent !important;
         }
+        
         #particles-js {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* 粒子在内容下方 */
+            z-index: 1; /* 确保粒子在最底层 */
+            background-color: #1e1e1e;
         }
-        /* 优化按钮质感 */
-        .btn-light {
-            background-color: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            border-radius: 30px;
-            padding: 10px 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
+
+        /* 修复名字排版：消除原CSS过大的行高 */
+        h1.my-name {
+            font-size: 3.5rem !important;
+            font-weight: 800 !important;
+            line-height: 1.2 !important;
+            margin-bottom: 10px !important;
+            color: #ffffff !important;
         }
-        .btn-light:hover {
-            background-color: #ffffff;
-            color: #000000;
+
+        /* VS Code 蓝的主题色 */
+        .vscode-blue {
+            color: #007acc !important; 
         }
-        /* 优化照片展示方式 */
+
+        /* 修复按钮：变成精简的线框按钮，文字不换行 */
+        .btn-portfolio {
+            background-color: transparent !important;
+            color: #ffffff !important;
+            border: 2px solid #007acc !important;
+            border-radius: 8px !important; /* 微圆角，更现代 */
+            padding: 10px 32px !important;
+            font-weight: 600 !important;
+            font-size: 1.1rem !important;
+            transition: all 0.3s ease !important;
+            white-space: nowrap !important; /* 核心修复：绝对不换行 */
+            display: inline-block !important;
+        }
+        
+        .btn-portfolio:hover {
+            background-color: #007acc !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 15px rgba(0, 122, 204, 0.4) !important;
+        }
+
+        /* 修复照片排版 */
         .hero_section img {
-            max-width: 70%;
-            border-radius: 50%; /* 把照片裁成圆形，更符合学术审美 */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            max-width: 65% !important;
+            border-radius: 50% !important;
+            box-shadow: 0 0 30px rgba(0,0,0,0.6) !important;
+            border: 3px solid #007acc !important; /* 加一圈VSCode蓝的边框更搭 */
         }
     </style>
 </head>
@@ -75,19 +95,29 @@
     <div class="hero_section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 col-md-6 col-ms-12 col-xs-12">
-                    <h3>Hello!</h3>
-                    <h1>I'm <span style="color: #45a29e;">Zhenyang Huang</span></h1>
-                    <h2 style="font-size: 1.8rem; margin-top: 15px; margin-bottom: 20px;">Astrophysics & Interpretable AI</h2>
-                    <p style="font-size: 1.1rem; line-height: 1.6; color: #c5c6c7;">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <p style="font-size: 1.2rem; color: #858585; margin-bottom: 5px;">Hello! I'm</p>
+                    
+                    <h1 class="my-name">
+                        <span class="vscode-blue">Zhenyang</span> Huang
+                    </h1>
+                    
+                    <h2 style="font-size: 1.8rem; font-weight: 600; margin-bottom: 20px; color: #cccccc;">
+                        AI for Astrophysics
+                    </h2>
+                    
+                    <p style="font-size: 1.1rem; line-height: 1.6; color: #a6a6a6; max-width: 95%;">
                         I am a Master's student in Astronomy at the Xinjiang Astronomical Observatory, Chinese Academy of Sciences. 
-                        I wanna to bridge the gap between complex astrophysical datasets and fundamental physical laws using machine learning model.
+                        I wanna bridge the gap between complex astrophysical datasets and fundamental physical laws using machine learning models.
                     </p>
+                    
                     <div class="btn_container" style="margin-top: 30px;">
-                        <a href="./portfolio/index.html"><button class="btn btn-light animate__animated animate__fadeInUp">View Academic Profile</button></a>
+                        <a href="./portfolio/index.html" style="text-decoration: none;">
+                            <button class="btn btn-portfolio animate__animated animate__fadeInUp">Portfolio</button>
+                        </a>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-ms-12 col-xs-12 mt-5 mt-lg-0">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 mt-5 mt-lg-0">
                     <center>
                         <img src="./img/profile.png" alt="Zhenyang Huang" class="animate__animated animate__zoomIn">
                     </center>
@@ -97,6 +127,42 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script type="text/javascript" src="./js/app.js"></script>
+    
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": ["#ffffff", "#007acc"] }, /* 粒子颜色加入了VS Code蓝呼应主题 */
+                "shape": { "type": "circle" },
+                "opacity": { 
+                    "value": 0.6, "random": true, 
+                    "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } 
+                },
+                "size": { 
+                    "value": 3, "random": true, 
+                    "anim": { "enable": false, "speed": 10, "size_min": 0.1, "sync": false } 
+                },
+                "line_linked": { 
+                    "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.2, "width": 1 
+                },
+                "move": { 
+                    "enable": true, "speed": 1.5, "direction": "none", "random": false, 
+                    "straight": false, "out_mode": "out", "bounce": false 
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" }
+                },
+                "modes": {
+                    "grab": { "distance": 180, "line_linked": { "opacity": 0.6 } },
+                    "push": { "particles_nb": 3 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
 </body>
 </html>
